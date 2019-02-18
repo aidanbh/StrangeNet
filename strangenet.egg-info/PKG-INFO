@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: strangenet
+Version: 0.0.1
+Summary: IP-over-DigiMesh link layer using TUN
+Home-page: https://github.com/aidanh010/strangenet
+Author: Aidan Hunt
+Author-email: aidanhunt@acm.org
+License: UNKNOWN
+Description: # StrangeBox
+        A free software solution for wireless IP networking over Digi's XBee API.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)
+Classifier: Topic :: Internet
+Classifier: Development Status :: 3 - Alpha
+Description-Content-Type: text/markdown

@@ -1,0 +1,64 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "fa7681cd6a1e646cbe0581983d6bb7aeb39f2c4d297b0def0d54a4595fa0016f"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.7"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "digi-xbee": {
+            "hashes": [
+                "sha256:5bef6b1888886e99d1ec02ba35e1db17eb5f6f5b008e08cc85571f94df104acf"
+            ],
+            "index": "pypi",
+            "version": "==1.1.1.1"
+        },
+        "pypacker": {
+            "hashes": [
+                "sha256:da5dd09d30f2603378265da5c11351f5b891ba5cd96458dff31bac6d44cbe4af"
+            ],
+            "index": "pypi",
+            "version": "==4.5"
+        },
+        "pyserial": {
+            "hashes": [
+                "sha256:6e2d401fdee0eab996cf734e67773a0143b932772ca8b42451440cfed942c627",
+                "sha256:e0770fadba80c31013896c7e6ef703f72e7834965954a78e71a3049488d4d7d8"
+            ],
+            "index": "pypi",
+            "version": "==3.4"
+        },
+        "python-pytun": {
+            "hashes": [
+                "sha256:27aae68d347366058748a1d462fe817494863df65dca576a9fea4cf5c5cba884",
+                "sha256:32be1cdf3c318b0ec88c64c90ae44ce041d8d98c1c8bb1b93646edefb0be8ef4",
+                "sha256:5044add1b0b82bf68c47cb3f312edc243ed73b05cade5045758358148a529754",
+                "sha256:5ead86b3391acef239535ebcabeb04d2cdc6b40ab14580d28c6da193c2d1fe53",
+                "sha256:86a255c0233f2a2c30fade3d088e68dc5a70653e40824a286f23c3e61f978b7c",
+                "sha256:9b918ff11b92f85781baffc258d6c94d49fb9367ad8c166724b88e46c46421f9",
+                "sha256:9e5295767217f60e3fcbd2e73d4f8c798e9c5d9a09b3c6eedadaedfaf66c85d9"
+            ],
+            "index": "pypi",
+            "version": "==2.3.0"
+        },
+        "wheel": {
+            "hashes": [
+                "sha256:12363e6df5678ecf9daf8429f06f97e7106e701405898f24318ce7f0b79c611a",
+                "sha256:b79ffea026bc0dbd940868347ae9eee36789b6496b6623bd2dec7c7c540a8f99"
+            ],
+            "index": "pypi",
+            "version": "==0.33.0"
+        }
+    },
+    "develop": {}
+}

@@ -1,0 +1,7 @@
+README.md
+setup.py
+strangenet/__init__.py
+strangenet.egg-info/PKG-INFO
+strangenet.egg-info/SOURCES.txt
+strangenet.egg-info/dependency_links.txt
+strangenet.egg-info/top_level.txt
