@@ -46,7 +46,7 @@ class backend:
         data = self.tun.read(self.tun.mtu)
         if data is not None:
                     logging.debug('data incoming on TUN')
-                    sys.stdout.buffer.write(data)
+                    #sys.stdout.buffer.write(data)
                     pack = ip.IP(data)
                     return {"IP": pack.dst, "payload": data}
         

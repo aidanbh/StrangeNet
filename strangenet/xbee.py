@@ -40,8 +40,8 @@ class strangenet_xbee:
 
         # we have an IP, encode to NI
         # dst is to be a string, link layer is responsible for this
-        dstNI = "STR_" + dst.hex()
-        print('\n', dstNI)
+        dstNI = dst.hex()
+        print('\nSTR_', dstNI)
         
         # see if we have the MAC cached, note that caching last duration of runtime
         # so we do not have an easy way for devices to change IP
@@ -56,7 +56,7 @@ class strangenet_xbee:
 
         # proceed to send the data now that we have destdev
         # TODO do this asynchronously
-
+        
         try:
             self.device.send_data(destdev, payload) # no exec == success (ACK recd)
         except digi.xbee.TimeoutException:
@@ -65,11 +65,10 @@ class strangenet_xbee:
         except XBeeException: # wrong op mode, corrupt response, serial error
             return "ERROR"
 
-
     def broadcast_tx(self, payload):
         pass
-    
-    def poll(timeout):
+
+    def poll(self, timeout):
         data = self.device.read_data()
         if data is not None:
             # we have an XBeeMessage object
