@@ -40,8 +40,8 @@ class strangenet_xbee:
 
         # we have an IP, encode to NI
         # dst is to be a string, link layer is responsible for this
-        dstNI = "STR_" + str(dst)
-        print(dstNI)
+        dstNI = "STR_" + dst.hex()
+        print('\n', dstNI)
         
         # see if we have the MAC cached, note that caching last duration of runtime
         # so we do not have an easy way for devices to change IP
