@@ -39,7 +39,9 @@ class strangenet_xbee:
             return self.broadcast_tx(payload)
 
         # we have an IP, encode to NI
-        dstNI = 'STR_' + dst # dst is to be a string, link layer is responsible for this
+        # dst is to be a string, link layer is responsible for this
+        dstNI = "STR_" + str(dst)
+        print(dstNI)
         
         # see if we have the MAC cached, note that caching last duration of runtime
         # so we do not have an easy way for devices to change IP
