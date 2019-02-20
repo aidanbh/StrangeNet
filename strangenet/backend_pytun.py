@@ -38,7 +38,9 @@ class backend:
 
     # called by main code when data is recieved from XBee
     def tx(self, payload):
-       self.tun.write(payload)
+        logging.info('Writing payload')
+        print(payload)
+        self.tun.write(payload)
 
     def poll(self):
         logging.debug('working on latest packets from tun')
