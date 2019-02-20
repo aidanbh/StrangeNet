@@ -30,6 +30,8 @@ class strangenet_xbee:
         logging.debug('Writing IP address ' + ipv4 + ' to XBee device...')
         self.device.set_parameter("NI", bytearray(('STR_' + ipv4), 'utf-8'))
 
+        self.device.write_changes() # in case of accidental reset
+
         # create a XBeeNetwork object to store discovered devices
         self.xnet = self.device.get_network()
 
