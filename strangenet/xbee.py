@@ -35,15 +35,18 @@ class strangenet_xbee:
         # create a XBeeNetwork object to store discovered devices
         self.xnet = self.device.get_network()
 
-    def tx(self, dst, payload):
-        # special procedures for broadcast
-        if dst is "10.0.0.0": # FIXME do the things to support other subnets
-            return self.broadcast_tx(payload)
+    def tx(self, dst_ip, payload):
 
         # we have an IP, encode to NI
-        # dst is to be a string, link layer is responsible for this
-        dstNI = dst.hex()
-        print('\nSTR_', dstNI)
+        # dst is a bytearray representing the destination IPv4
+        # there is probably a cleaner way to do this
+        dst = dst_ip.hex() # in hex this should be a fixed size
+        dstNI = 'STR_' + (str(int(dst[:2], 16)) + '.' + str(int(dst[2:4], 16)) + '.' + str(int(dst[4:6], 16)) + '.' + str(int(dst[6:8], 16)))
+        print('\nSending to NI:', dstNI)
+        
+        # special procedures for broadcast
+        if dstNI[3:] is "10.0.0.0": # FIXME do the things to support other subnets
+            return self.broadcast_tx(payload)
         
         # see if we have the MAC cached, note that caching last duration of runtime
         # so we do not have an easy way for devices to change IP
