@@ -51,6 +51,8 @@ class backend:
                     #sys.stdout.buffer.write(data)
                     pack = ip.IP(data)
                     return {"IP": pack.dst, "payload": data}
-        
+        else:
+            logging.debug("No packets from TUN.")
+            return None
     def phy_noroute(self, invalidip, datastart):
        pass

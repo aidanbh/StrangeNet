@@ -29,4 +29,4 @@ while True:
         xbee.tx(pack['IP'], pack['payload'])
     pack = xbee.poll(10)
     if pack is not None:
-        backend.tx(pack)
+        backend.tx(pack['payload'])
