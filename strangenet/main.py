@@ -24,7 +24,7 @@ xbee = strangenet_xbee()
 
 # event loop
 while True:
-    pack = backend.poll()
+    pack = backend.poll(10)
     if pack is not None:
         xbee.tx(pack['IP'], pack['payload'])
     pack = xbee.poll(10)

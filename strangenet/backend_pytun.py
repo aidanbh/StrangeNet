@@ -31,7 +31,6 @@ class backend:
         self.poller = select.poll()
         self.poller.register(self.tun, select.POLLIN)
 
-        # HERE BE DEBUG
 
     def set_mtu(self, mtu):
         self.tun.mtu = mtu
@@ -42,15 +41,18 @@ class backend:
         print(payload)
         self.tun.write(payload)
 
-    def poll(self):
-        logging.debug('working on latest packets from tun')
+    def poll(self, timeout):
+        logging.debug('Checking for packets on TUN...')
         
-        data = self.tun.read(self.tun.mtu)
-        if data is not None:
-                    logging.debug('data incoming on TUN')
-                    #sys.stdout.buffer.write(data)
-                    pack = ip.IP(data)
-                    return {"IP": pack.dst, "payload": data}
+        events = self.poller.poll(timeout)
+        if events: # lists are true iff. they are non-empty
+            # FIXME properly read the (fd, event) tuple, iterate list
+            logging.debug("Select poller reports TUN is readable...") 
+            data = self.tun.read(self.tun.mtu)
+            logging.debug("Incoming packets on TUN...")
+            #sys.stdout.buffer.write(data)
+            pack = ip.IP(data)
+            return {"IP": pack.dst, "payload": data}
         else:
             logging.debug("No packets from TUN.")
             return None
