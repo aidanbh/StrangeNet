@@ -5,35 +5,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import os, sys, logging
+import backend_pytun
 
 from digi.xbee.devices import XBeeDevice, DigiMeshDevice
 from digi.xbee.util import utils as xbu
 
+backend = backend_pytun.backend()
+
 class strangenet_xbee:
-    def __init__(self):
-        logging.debug("Initializing local XBee...")
-        
-        port = os.getenv("STRANGENET_XBEE_PORT", "/dev/ttyUSB0")
-        baud = os.getenv("STRANGENET_XBEE_BAUD", 230400)
-        logging.debug("Using port: " + port + " and baud: " + str(baud))
-        self.device = XBeeDevice(port,  baud)
-        self.device.open() # automatically does read_device_info() for local device
-        
-        # the XBee waits NT * 0.1 sec on a ND, DN or FN (default 0x82
-        # self.device.set_parameter('NT', xbu.hex_string_to_bytes('10'))
-
-        print('Printing NP value')
-        print(self.device.get_parameter("NP")) # NP: max packet size in hex
-        self.mtu = self.device.get_parameter("NP")
-
-        ipv4 = os.getenv('STRANGENET_IP', '10.0.0.1')
-        logging.debug('Writing IP address ' + ipv4 + ' to XBee device...')
-        self.device.set_parameter("NI", bytearray(('STR_' + ipv4), 'utf-8'))
-
-        self.device.write_changes() # in case of accidental reset
-
-        # create a XBeeNetwork object to store discovered devices
-        self.xnet = self.device.get_network()
 
     def tx(self, dst_ip, payload):
 
@@ -83,3 +62,34 @@ class strangenet_xbee:
         else:
             logging.debug("Nothing from XBee this time.")
             return None # None = no data w/in timeout (set to zero for instant)
+
+    def recieve(data):
+        pack = {'payload': bytes(data.data)}
+        backend.tx(pack['payload'])
+
+    def __init__(self):
+        logging.debug("Initializing local XBee...")
+        
+        port = os.getenv("STRANGENET_XBEE_PORT", "/dev/ttyUSB0")
+        baud = os.getenv("STRANGENET_XBEE_BAUD", 230400)
+        logging.debug("Using port: " + port + " and baud: " + str(baud))
+        self.device = XBeeDevice(port,  baud)
+        self.device.open() # automatically does read_device_info() for local device
+        
+        # the XBee waits NT * 0.1 sec on a ND, DN or FN (default 0x82
+        # self.device.set_parameter('NT', xbu.hex_string_to_bytes('10'))
+
+        print('Printing NP value')
+        print(self.device.get_parameter("NP")) # NP: max packet size in hex
+        self.mtu = self.device.get_parameter("NP")
+
+        ipv4 = os.getenv('STRANGENET_IP', '10.0.0.1')
+        logging.debug('Writing IP address ' + ipv4 + ' to XBee device...')
+        self.device.set_parameter("NI", bytearray(('STR_' + ipv4), 'utf-8'))
+
+        self.device.write_changes() # in case of accidental reset
+
+        # create a XBeeNetwork object to store discovered devices
+        self.xnet = self.device.get_network()
+
+        self.device.add_data_received_callback(recieve)
