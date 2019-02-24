@@ -74,12 +74,9 @@ class strangenet_xbee:
         pass
 
     def poll(self, timeout):
-        logging.debug("Polling XBee device for incoming packets...")
         data = self.device.read_data()
         if data is not None:
-            logging.debug("Packet recd from XBee, forwarding to TUN...")
             # we have an XBeeMessage object
             return {'payload': bytes(data.data)}
         else:
-            logging.debug("Nothing from XBee this time.")
             return None # None = no data w/in timeout (set to zero for instant)

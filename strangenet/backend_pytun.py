@@ -42,19 +42,14 @@ class backend:
         self.tun.write(payload)
 
     def poll(self, timeout):
-        logging.debug('Checking for packets on TUN...')
-        
         events = self.poller.poll(timeout)
         if events: # lists are true iff. they are non-empty
             # FIXME properly read the (fd, event) tuple, iterate list
-            logging.debug("Select poller reports TUN is readable...") 
             data = self.tun.read(self.tun.mtu)
-            logging.debug("Incoming packets on TUN...")
             #sys.stdout.buffer.write(data)
             pack = ip.IP(data)
             return {"IP": pack.dst, "payload": data}
         else:
-            logging.debug("No packets from TUN.")
             return None
     def phy_noroute(self, invalidip, datastart):
        pass
