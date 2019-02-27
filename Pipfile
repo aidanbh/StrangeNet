@@ -8,10 +8,10 @@ verify_ssl = true
 [packages]
 pyserial = "*"
 python-pytun = "*"
-digi-xbee = "*"
 setuptools = "*"
 wheel = "*"
 pypacker = "*"
+digi-xbee = {git = "git://github.com/digidotcom/python-xbee"}
 
 [requires]
 python_version = "3.7"

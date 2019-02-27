@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "fa7681cd6a1e646cbe0581983d6bb7aeb39f2c4d297b0def0d54a4595fa0016f"
+            "sha256": "ffa4a003f944fcc9f28c32e1067b62b543cbcd25627cc1252ae7a8780d8dacc0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -17,11 +17,8 @@
     },
     "default": {
         "digi-xbee": {
-            "hashes": [
-                "sha256:5bef6b1888886e99d1ec02ba35e1db17eb5f6f5b008e08cc85571f94df104acf"
-            ],
-            "index": "pypi",
-            "version": "==1.1.1.1"
+            "git": "git://github.com/digidotcom/python-xbee",
+            "ref": "3913114f2f47999d5535823b54c06fbc63c07fd6"
         },
         "pypacker": {
             "hashes": [
@@ -53,11 +50,11 @@
         },
         "wheel": {
             "hashes": [
-                "sha256:12363e6df5678ecf9daf8429f06f97e7106e701405898f24318ce7f0b79c611a",
-                "sha256:b79ffea026bc0dbd940868347ae9eee36789b6496b6623bd2dec7c7c540a8f99"
+                "sha256:66a8fd76f28977bb664b098372daef2b27f60dc4d1688cfab7b37a09448f0e9d",
+                "sha256:8eb4a788b3aec8abf5ff68d4165441bc57420c9f64ca5f471f58c3969fe08668"
             ],
             "index": "pypi",
-            "version": "==0.33.0"
+            "version": "==0.33.1"
         }
     },
     "develop": {}
