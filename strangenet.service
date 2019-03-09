@@ -1,0 +1,14 @@
+[Unit]
+Description=StrangeNet XBee Networking Solution
+After=network.target
+
+[Service]
+User=root
+Restart=always
+Type=simple
+WorkingDirectory=/opt/strangenet
+ExecStart=pipenv run python3 /opt/strangenet/strangenet/main.py
+Environment=STRANGENET_IP=10.0.0.1
+
+[Install]
+WantedBy=multi-user.target
