@@ -8,6 +8,7 @@ import os, sys, logging
 
 from digi.xbee.devices import XBeeDevice, DigiMeshDevice
 from digi.xbee.util import utils as xbu
+from digi.xbee.exception import TimeoutException, XBeeException
 
 class strangenet_xbee:
     def __init__(self):
@@ -64,7 +65,7 @@ class strangenet_xbee:
         
         try:
             self.device.send_data(destdev, payload) # no exec == success (ACK recd)
-        except digi.xbee.TimeoutException:
+        except TimeoutException:
             logging.warning("Timeout on XBee link")
             return "TIMEOUT"
         except XBeeException: # wrong op mode, corrupt response, serial error
