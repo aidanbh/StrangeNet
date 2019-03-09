@@ -7,7 +7,8 @@ User=root
 Restart=always
 Type=simple
 WorkingDirectory=/opt/strangenet
-ExecStart=pipenv run python3 /opt/strangenet/strangenet/main.py
+ExecStartPre=pipenv sync
+ExecStart=pipenv run python /opt/strangenet/strangenet/main.py
 Environment=STRANGENET_IP=10.0.0.1
 
 [Install]
