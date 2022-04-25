@@ -47,7 +47,7 @@ export STRANGENET_IP=10.0.0.2
 
 ### Launch `strangenet`
 
-From the current folder, execute the following to launch `strangenet`:
+From the current folder, navigate to the `strangenet` folder and then execute the following to launch `strangenet`:
 
 ```bash
 python3 main.py
