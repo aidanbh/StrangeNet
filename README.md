@@ -45,6 +45,14 @@ Give the "Server" interface a different name on the same subnet:
 export STRANGENET_IP=10.0.0.2
 ```
 
+### Launch `strangenet`
+
+From the current folder, execute the following to launch `strangenet`:
+
+```bash
+python3 main.py
+```
+
 Now, you are setup to run a couple of quick IP networking commands: `ping` and `ssh`.
 
 ### `ping`
